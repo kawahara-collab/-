@@ -1,0 +1,124 @@
+/* =========================================================
+   かわはら社会福祉士事務所 リニューアル用CSS（グーペ）
+   貼り付け先：グーペ管理画面 → デザイン → CSS（スタイルシート）編集 の末尾
+   ・トップページのウェルカムメッセージ（welcome.html）用のスタイル
+   ・旧テーマの装飾（ツタ・カウンター等）を非表示
+   ========================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap");
+
+:root {
+  --kw-ink: #16212e;
+  --kw-ink-soft: #4a5665;
+  --kw-line: #d9dee4;
+  --kw-paper: #f7f8f9;
+  --kw-ai: #1d3557;      /* 藍：ブランド主色 */
+  --kw-ai-deep: #13253d;
+  --kw-kaki: #a4673a;    /* 柿渋：アクセント */
+  --kw-mincho: "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --kw-gothic: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", sans-serif;
+}
+
+/* ---------- 旧テーマ装飾の整理 ---------- */
+.counter_area,                    /* アクセスカウンター（企業サイトでは非表示が一般的） */
+.qr_area,                         /* QRコード */
+.top_line,
+.village_header_ivy,
+.village_paper_top_ivy_right,
+.village_paper_top_ivy_left,
+.village_paper_bottom_ivy_right,
+.village_paper_bottom_ivy_left,
+.top_welcome_area > h2.homemade_apple { display: none !important; }
+
+body { font-family: var(--kw-gothic); color: var(--kw-ink); letter-spacing: .04em; }
+
+/* ---------- ウェルカムエリア ---------- */
+.kw { font-family: var(--kw-gothic); color: var(--kw-ink); line-height: 1.9; text-align: left; }
+.kw * { box-sizing: border-box; }
+.kw h2, .kw h3 { font-family: var(--kw-mincho); font-weight: 700; letter-spacing: .06em; line-height: 1.6; margin: 0; }
+.kw p { margin: 0; }
+.kw-sec { padding: 56px 0; border-top: 1px solid var(--kw-line); }
+.kw-eyebrow { font-size: 13px; letter-spacing: .24em; color: var(--kw-kaki); text-transform: uppercase; margin-bottom: 8px; }
+.kw-sec > h2 { font-size: 26px; margin-bottom: 28px; }
+.kw-lead { color: var(--kw-ink-soft); margin-bottom: 28px; }
+
+/* ヒーロー */
+.kw-hero { background: var(--kw-ai); color: #f3f5f8; padding: 56px 36px; }
+.kw-hero .kw-area { font-family: var(--kw-mincho); font-size: 14px; letter-spacing: .3em; color: #b9c4d2; margin-bottom: 18px; }
+.kw-hero h2 { font-size: 34px; line-height: 1.55; color: #fff; }
+.kw-hero h2 span { border-bottom: 2px solid var(--kw-kaki); }
+.kw-hero p { color: #c9d2de; margin-top: 20px; }
+.kw-hero .kw-btns { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* ボタン */
+.kw-btn { display: inline-block; padding: 14px 24px; font-weight: 700; font-size: 15px; text-decoration: none !important; border: 1px solid transparent; }
+.kw-btn-white { background: #fff; color: var(--kw-ai-deep) !important; }
+.kw-btn-line { border-color: #fff; color: #fff !important; }
+.kw-btn-ai { background: var(--kw-ai); color: #fff !important; }
+.kw-btn:hover { opacity: .88; }
+
+/* 実績の帯 */
+.kw-facts { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--kw-line); margin: 0; }
+.kw-facts div { padding: 20px 16px; border-left: 1px solid var(--kw-line); }
+.kw-facts div:first-child { border-left: 0; }
+.kw-facts dt { font-size: 12px; color: var(--kw-ink-soft); }
+.kw-facts dd { margin: 4px 0 0; font-family: var(--kw-mincho); font-weight: 700; font-size: 15px; }
+
+/* お悩みリスト */
+.kw-worries { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--kw-ink); }
+.kw-worries li { padding: 16px 0 16px 22px; border-bottom: 1px solid var(--kw-line); position: relative; }
+.kw-worries li::before { content: ""; position: absolute; left: 2px; top: 1.45em; width: 7px; height: 7px; background: var(--kw-kaki); transform: rotate(45deg); }
+
+/* 強み */
+.kw-strengths { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.kw-strengths .kw-k { font-family: var(--kw-mincho); font-size: 44px; font-weight: 800; color: var(--kw-ai); line-height: 1; }
+.kw-strengths h3 { font-size: 18px; margin-top: 14px; }
+.kw-strengths p { font-size: 14.5px; color: var(--kw-ink-soft); margin-top: 10px; }
+
+/* 業務と費用 */
+.kw-svc { border-top: 1px solid var(--kw-ink); }
+.kw-svc-row { display: grid; grid-template-columns: 200px 1fr 150px; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--kw-line); }
+.kw-svc-row h3 { font-size: 17px; }
+.kw-svc-row p { font-size: 14.5px; color: var(--kw-ink-soft); }
+.kw-svc-row .kw-fee { text-align: right; font-size: 12px; color: var(--kw-ink-soft); }
+.kw-svc-row .kw-fee b { display: block; font-size: 17px; color: var(--kw-ink); }
+
+/* 流れ */
+.kw-flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.kw-flow li { border-top: 2px solid var(--kw-ai); padding-top: 14px; }
+.kw-flow .kw-step { font-size: 12px; letter-spacing: .2em; color: var(--kw-kaki); }
+.kw-flow h3 { font-size: 16px; margin-top: 4px; }
+.kw-flow p { font-size: 14px; color: var(--kw-ink-soft); margin-top: 8px; }
+
+/* FAQ */
+.kw-faq details { border-bottom: 1px solid var(--kw-line); }
+.kw-faq details:first-child { border-top: 1px solid var(--kw-ink); }
+.kw-faq summary { cursor: pointer; padding: 18px 0; font-family: var(--kw-mincho); font-weight: 700; font-size: 16px; }
+.kw-faq details p { padding: 0 0 18px 1.2em; color: var(--kw-ink-soft); font-size: 14.5px; }
+
+/* 問い合わせ帯 */
+.kw-cta { background: var(--kw-ai-deep); color: #f3f5f8; padding: 44px 36px; margin-top: 56px; }
+.kw-cta h2 { color: #fff; font-size: 24px; }
+.kw-cta .kw-tel { display: block; font-size: 40px; font-weight: 700; letter-spacing: .02em; color: #fff !important; text-decoration: none !important; margin-top: 16px; line-height: 1.2; }
+.kw-cta .kw-sub { color: #b9c4d2; font-size: 13px; margin-top: 6px; }
+.kw-cta .kw-btn { margin-top: 20px; }
+
+/* スマホ固定の電話バー */
+.kw-spbar { display: none; }
+
+/* ---------- スマートフォン ---------- */
+@media (max-width: 768px) {
+  .kw-hero { padding: 40px 20px; }
+  .kw-hero h2 { font-size: 25px; }
+  .kw-facts { grid-template-columns: 1fr 1fr; }
+  .kw-facts div:nth-child(3) { border-left: 0; }
+  .kw-strengths, .kw-flow { grid-template-columns: 1fr; }
+  .kw-svc-row { grid-template-columns: 1fr; gap: 6px; }
+  .kw-svc-row .kw-fee { text-align: left; }
+  .kw-cta { padding: 32px 20px; }
+  .kw-cta .kw-tel { font-size: 30px; }
+  .kw-spbar { display: grid; grid-template-columns: 1.4fr 1fr; gap: 8px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 9999;
+              background: #fff; border-top: 1px solid var(--kw-line); padding: 8px 10px calc(8px + env(safe-area-inset-bottom)); }
+  .kw-spbar a { text-align: center; padding: 12px 4px; font-size: 14px; }
+  body { padding-bottom: 72px; }
+}
