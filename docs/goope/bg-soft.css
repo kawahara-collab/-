@@ -5,3 +5,5 @@ body, #top { background: linear-gradient(160deg, #e8f0f6 0%, #eef4f2 55%, #e9f2e
 #side, .sidebar_paper, .sidebar_paper_inner, .top_main_area, .top_info_area_inner { background: transparent !important; }
 .navi_ul li.cookie, .navi_ul ul.sub_navi { background: rgba(255,255,255,.55) !important; }
 .navi_ul li.cookie a:hover { background: #fff !important; }
+/* KW 2026-10-23 追加：ロゴ（白地のJPEG）を背景色になじませる。フッターの紺地では使わない */
+.site_logo img { mix-blend-mode: multiply; }
