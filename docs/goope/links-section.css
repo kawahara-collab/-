@@ -1,0 +1,6 @@
+/* KW 2026-10-23 追加：トップの「関係機関・参考リンク」 */
+.kw-member { margin: 0 0 22px; padding: 14px 18px; background: #eef3f8; border-left: 4px solid var(--kw-ai); font-size: 15px; }
+.kw-links a { position: relative; padding-right: 28px !important; }
+.kw-links a::after { content: "↗"; position: absolute; right: 6px; top: 50%; transform: translateY(-50%); font-size: 14px; color: var(--kw-kaki); }
+.kw-links-more { margin: 18px 0 0; text-align: right; font-size: 14px; }
+.kw-links-more a { color: var(--kw-ai) !important; }
