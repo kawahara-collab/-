@@ -1,3 +1,4 @@
+/* 2026-10-23 オーナーの判断で取り下げ（サイトからは削除済み）。再び使うときはグーペのCSS末尾に貼る。 */
 /* KW 2026-10-23 追加：背景の真っ白をやめ、淡い青→緑のグラデーションに。本文は白に近い紙のように浮かせる（案B） */
 body, #top { background: linear-gradient(160deg, #e8f0f6 0%, #eef4f2 55%, #e9f2ec 100%) fixed !important; }
 #main, .main_inner { background: #fbfcfc !important; }
