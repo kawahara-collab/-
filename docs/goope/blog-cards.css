@@ -1,0 +1,17 @@
+/* KW 2026-10-23 追加：ブログ一覧を写真入りのカード形式に（記事ページは変えない。JSが body に kw-diary-list を付けたときだけ効く） */
+.kw-diary-list .p-diary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.kw-diary-list .p-diary__unit { position: relative; display: flex; flex-direction: column; margin: 0 !important; padding: 0 !important; background: #fff; border: 1px solid var(--kw-line); border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(19,37,61,.06); transition: box-shadow .2s, transform .2s; }
+.kw-diary-list .p-diary__unit:hover { box-shadow: 0 8px 24px rgba(19,37,61,.14); transform: translateY(-2px); }
+.kw-diary-list .p-diary__body { display: none !important; }
+.kw-diary-list .kw-card-thumb { display: block; aspect-ratio: 16 / 10; background: var(--kw-paper) center / cover no-repeat; order: -1; }
+.kw-diary-list .kw-card-thumb.is-empty { background: linear-gradient(135deg, #e3e9f0, #f6efe6); }
+.kw-diary-list .p-diary__date { order: 0; margin: 14px 18px 0; font-size: 12.5px; color: var(--kw-ink-soft); }
+.kw-diary-list .p-diary__title { order: 1; margin: 4px 18px 0 !important; padding: 0 !important; border: 0 !important; background: none !important; font-family: var(--kw-mincho); font-size: 17px; line-height: 1.55; text-align: left; }
+.kw-diary-list .p-diary__title a { color: var(--kw-ink); text-decoration: none; }
+.kw-diary-list .p-diary__title a::after { content: ""; position: absolute; inset: 0; }
+.kw-diary-list .p-diary__category { order: 2; margin: 8px 18px 0; font-size: 12px; }
+.kw-diary-list .p-diary__category a { position: relative; z-index: 1; display: inline-block; padding: 2px 10px; background: #eef3f8; color: var(--kw-ai); border-radius: 999px; text-decoration: none; }
+.kw-diary-list .kw-card-excerpt { order: 3; margin: 10px 18px 0; font-size: 14px; line-height: 1.8; color: var(--kw-ink-soft); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.kw-diary-list .kw-card-more { order: 4; margin: auto 18px 16px; padding-top: 12px; font-size: 13.5px; font-weight: 700; color: var(--kw-kaki); text-align: right; }
+.kw-diary-list .pager { margin-top: 28px; }
+@media (max-width: 768px) { .kw-diary-list .p-diary { grid-template-columns: 1fr; gap: 18px; } }

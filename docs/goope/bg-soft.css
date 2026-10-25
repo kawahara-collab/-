@@ -1,0 +1,10 @@
+/* 2026-10-23 オーナーの判断で取り下げ（サイトからは削除済み）。再び使うときはグーペのCSS末尾に貼る。 */
+/* KW 2026-10-23 追加：背景の真っ白をやめ、淡い青→緑のグラデーションに。本文は白に近い紙のように浮かせる（案B） */
+body, #top { background: linear-gradient(160deg, #e8f0f6 0%, #eef4f2 55%, #e9f2ec 100%) fixed !important; }
+#main, .main_inner { background: #fbfcfc !important; }
+#main { border-radius: 12px; box-shadow: 0 6px 30px rgba(19,37,61,.08); }
+#side, .sidebar_paper, .sidebar_paper_inner, .top_main_area, .top_info_area_inner { background: transparent !important; }
+.navi_ul li.cookie, .navi_ul ul.sub_navi { background: rgba(255,255,255,.55) !important; }
+.navi_ul li.cookie a:hover { background: #fff !important; }
+/* KW 2026-10-23 追加：ロゴ（白地のJPEG）を背景色になじませる。フッターの紺地では使わない */
+.site_logo img { mix-blend-mode: multiply; }
