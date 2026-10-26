@@ -1,0 +1,51 @@
+<!--
+  事務所概要（/about）の見た目を整える（2026-10-26）
+  グーペの「店舗情報」の表をもとに、①特色 ②基本情報の表 ③沿革（年表）に組み直す。
+  元のデータは管理画面「店舗情報」のまま（そこで直せば、ここにも反映される）。読み取れないときは元の表をそのまま出す。
+  貼り付け先：デザイン → HTML・CSS編集 のHTMLの </body> の直前。CSSは about-layout.css。
+  注意：グーペはHTML内の {xxx} の形を消すので、正規表現の回数指定などは使わない。
+-->
+<script>/* KW 2026-10-26 事務所概要を「特色・基本情報・沿革」に整理 */(function(){
+function txt(td){return td?td.textContent.replace(/\s+/g,' ').trim():'';}
+function f(){
+  if(!/^\/about\/?$/.test(location.pathname))return;
+  var tb=document.querySelector('.about_area table.table_detail');
+  if(!tb||tb.getAttribute('data-kw'))return;
+  var m=new Object(),rows=tb.querySelectorAll('tr');
+  for(var i=0;i<rows.length;i++){
+    if(rows[i].style.display==='none')continue;
+    var th=rows[i].querySelector('th'),td=rows[i].querySelector('td');
+    if(th&&td)m[th.textContent.trim()]=td;
+  }
+  if(!m['設立日']||!m['事務所名'])return;
+  var lines=m['設立日'].innerText.split('\n'),hist=[],est='';
+  for(var j=0;j<lines.length;j++){
+    var s=lines[j].replace(/^[\s•・]+/,'').trim();if(!s)continue;
+    var k=s.search(/[\s　]/);var d=k>0?s.slice(0,k):s,t=k>0?s.slice(k).trim():'';
+    hist.push('<li><span class="kw-tl-date">'+d+'</span><span class="kw-tl-text">'+t+'</span></li>');
+    if(t.indexOf('一般社団法人')===0)est=d;
+  }
+  var R=[];
+  function row(h,v){if(v)R.push('<tr><th>'+h+'</th><td>'+v+'</td></tr>');}
+  row('事務所名',txt(m['事務所名']));
+  row('代表者',txt(m['代表者']));
+  row('設立',est);
+  row('法人番号',txt(m['法人番号']));
+  row('所在地',(txt(m['郵便番号'])?txt(m['郵便番号'])+'<br>':'')+(m['住所']?m['住所'].innerHTML:''));
+  row('最寄り駅',txt(m['最寄り駅']));
+  var tel=txt(m['電話番号']);
+  row('電話',tel?'<a href="tel:'+tel.replace(/-/g,'')+'">'+tel+'</a>':'');
+  row('相談ダイヤル',txt(m['相談ダイヤル']));
+  row('FAX',txt(m['FAX番号']));
+  row('受付時間',txt(m['営業時間']).replace(/\s*：\s*/,' ').replace(/(\d+)時/g,'$1:00').replace(/～/g,'–'));
+  row('休み',txt(m['定休日']));
+  var h='<div class="kw-about">';
+  if(m['特色'])h+='<div class="kw-about-lead">'+m['特色'].innerHTML+'</div>';
+  h+='<h3 class="kw-about-h">基本情報</h3><table class="kw-about-table"><tbody>'+R.join('')+'</tbody></table>';
+  if(hist.length)h+='<h3 class="kw-about-h">沿革</h3><ol class="kw-timeline">'+hist.join('')+'</ol>';
+  h+='</div>';
+  tb.insertAdjacentHTML('beforebegin',h);
+  tb.style.display='none';tb.setAttribute('data-kw','1');
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',f);}else{f();}
+})();</script>

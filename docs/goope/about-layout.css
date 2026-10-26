@@ -1,0 +1,21 @@
+/* KW 2026-10-26 事務所概要を「特色・基本情報・沿革」に整理（JSは about-layout.html） */
+.kw-about { margin-top: 8px; }
+.kw-about-lead { margin: 0 0 32px; padding: 18px 22px; background: #f5f7f9; border-left: 4px solid var(--kw-ai); font-size: 15px; line-height: 1.9; }
+.kw-about-h { margin: 36px 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--kw-ai); font-family: var(--kw-mincho); font-size: 19px; color: var(--kw-ink); }
+.kw-about-table { width: 100%; border-collapse: collapse; border-top: 1px solid var(--kw-line); }
+.kw-about-table th, .kw-about-table td { padding: 14px 12px; border-bottom: 1px solid var(--kw-line); text-align: left; vertical-align: top; font-size: 15px; line-height: 1.7; }
+.kw-about-table th { width: 9em; background: #f5f7f9; color: var(--kw-ink); font-weight: 700; white-space: nowrap; }
+.kw-about-table a { color: var(--kw-ai); }
+.kw-timeline { list-style: none; margin: 0; padding: 0 0 0 4px; }
+.kw-timeline li { position: relative; display: flex; gap: 16px; padding: 0 0 18px 22px; border-left: 2px solid var(--kw-line); }
+.kw-timeline li:last-child { border-left-color: transparent; padding-bottom: 0; }
+.kw-timeline li::before { content: ""; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--kw-ai); }
+.kw-timeline li:last-child::before { background: var(--kw-kaki); }
+.kw-tl-date { flex: 0 0 8.5em; font-weight: 700; color: var(--kw-ai); font-size: 14.5px; }
+.kw-tl-text { flex: 1; font-size: 15px; line-height: 1.7; }
+@media (max-width: 600px) {
+  .kw-about-table th { width: 6.5em; padding: 12px 8px; font-size: 14px; }
+  .kw-about-table td { padding: 12px 8px; font-size: 14px; }
+  .kw-timeline li { flex-direction: column; gap: 2px; }
+  .kw-tl-date { flex: none; }
+}
