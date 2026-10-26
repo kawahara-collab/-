@@ -1,0 +1,7 @@
+/* KW 2026-10-23 追加：カウンター見出しの旧テーマの二重線をやめ、細い線に */
+.counter_area img[src*="village_side_title_line"] { display: none !important; }
+.counter_area .today_area_today::after { content: ""; display: block; width: 60%; height: 1px; margin: 10px auto 0; background: var(--kw-line); }
+/* KW 2026-10-23 追加：古いお知らせ本文の文字色・大きさ・書体をそろえる（文章は変えない） */
+#info .info_text, #info .info_text * { color: var(--kw-ink) !important; font-family: var(--kw-gothic) !important; font-size: 15px !important; line-height: 1.9 !important; letter-spacing: .03em !important; font-weight: normal !important; }
+#info .info_text a { color: var(--kw-ai) !important; text-decoration: underline !important; }
+#info .info_text strong, #info .info_text b { font-weight: 700 !important; }
