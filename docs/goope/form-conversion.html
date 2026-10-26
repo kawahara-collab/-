@@ -1,29 +1,12 @@
 <!--
-  【使わない（2026-10-23 オーナー判断）】
-  「フォーム送信」はすでにURL方式で計測している（10/20作成、コンバージョンの種類ID 7858627664、
-  「kawahara1.com/contact/sendmail で始まるページ」）。10/21のテスト送信で、送信後のページは /contact/sendmail/ だった。
-  下のコードを足すと、送信1回が2件と数えられるため、グーペには入れない。
--->
-<!--
-  お問い合わせフォーム送信の計測（Google広告「フォーム送信」コンバージョン）
-  貼り付け先：グーペ管理画面 → ナビゲーションパーツ（電話タップ計測のコードと同じ場所）の末尾に追加
-  事前準備：Google広告で「フォーム送信」のコンバージョン アクションを「手動でコードを使って設定」で作り、
-           表示される送信先（AW-797252503/xxxxxxxx）の「/」以降で FORM_LABEL を置き換える
+  お問い合わせフォーム送信の計測（Google広告「フォーム送信（完了画面）」コンバージョン）
+  2026-10-26 オーナー判断で採用。貼り付け先：グーペ「デザイン → HTML・CSS編集」のHTMLの </body> の直前
+  送信先：AW-797252503/g5-1COid5KkdEJe3lPwC（「手動でコードを使って設定」で作成、リードフォームの送信・メイン・初回のみ）
 
-  しくみ：送信後の完了ページは、フォームと同じ https://kawahara1.com/contact/ のため、URLでは区別できない。
-         /contact のページに「お問合わせありがとうございました」の文字が出たときだけ、成果を1回送る。
+  しくみ：送信後のページは、成功しても失敗（reCAPTCHAのスパム判定など）しても /contact/sendmail/ になる。
+         そこで、/contact のページに成功時の文字「お問い合わせありがとうございました」が出たときだけ、成果を1回送る。
+         （2026-10-26 オーナーの実機テストで、成功時は「メールを送信しました。お問い合わせありがとうございました。」と表示）
+  旧「フォーム送信」（URL方式、ID 7858627664）は、二重計測を避けるため「サブ」にする。
+  注意：グーペはHTML内の {4} のような波かっこを消すので、正規表現の回数指定は使わない。
 -->
-<script>
-(function(){
-  var SEND_TO = 'AW-797252503/FORM_LABEL';
-  function check(){
-    if (location.pathname.indexOf('/contact') !== 0) return;
-    var text = document.body ? (document.body.innerText || document.body.textContent || '') : '';
-    if (text.indexOf('お問合わせありがとうございました') === -1 && text.indexOf('メールを送信いたしました') === -1) return;
-    if (typeof gtag === 'function') {
-      gtag('event', 'conversion', { 'send_to': SEND_TO });
-    }
-  }
-  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', check); } else { check(); }
-})();
-</script>
+<script>/* KW 2026-10-26 フォーム送信（完了画面）の計測 */(function(){var SEND_TO='AW-797252503/g5-1COid5KkdEJe3lPwC';function check(){if(location.pathname.indexOf('/contact')!==0)return;var t=document.body?(document.body.innerText||document.body.textContent||''):'';if(t.indexOf('お問い合わせありがとうございました')===-1)return;if(typeof gtag==='function'){gtag('event','conversion',{'send_to':SEND_TO});}}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',check);}else{check();}})();</script>
