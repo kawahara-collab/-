@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8">
+<!-- 広告の原本PDF（さいとぴあ.pdf）を画像にして、Googleマップのカバー用（1600×900）に整える。Playwrightで使う -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<style>body{margin:0}canvas{display:block}</style>
+</head><body>
+<input type="file" id="f">
+<canvas id="out" width="1600" height="900"></canvas>
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+window.render = async function(opt){
+  const buf = await document.getElementById('f').files[0].arrayBuffer();
+  const pdf = await pdfjsLib.getDocument({data:buf}).promise;
+  const page = await pdf.getPage(1);
+  const vp0 = page.getViewport({scale:1});
+  const scale = 3000/vp0.width;
+  const vp = page.getViewport({scale});
+  const c = document.createElement('canvas'); c.width=vp.width; c.height=vp.height;
+  await page.render({canvasContext:c.getContext('2d'), viewport:vp}).promise;
+  // crop the blue panel (fractions of page size, measured on the PDF)
+  const sx=opt.x0*c.width, sy=opt.y0*c.height, sw=(opt.x1-opt.x0)*c.width, sh=(opt.y1-opt.y0)*c.height;
+  const g = c.getContext('2d');
+  const px = g.getImageData(Math.round(sx+sw*0.02), Math.round(sy+sh*0.5), 1, 1).data;
+  const bg = `rgb(${px[0]},${px[1]},${px[2]})`;
+  // hide the small "広告" print label
+  if (opt.label) { g.fillStyle=bg; g.fillRect(opt.label[0]*c.width, opt.label[1]*c.height, (opt.label[2]-opt.label[0])*c.width, (opt.label[3]-opt.label[1])*c.height); }
+  const o = document.getElementById('out'); const og = o.getContext('2d');
+  og.fillStyle=bg; og.fillRect(0,0,1600,900);
+  const w = 1520, h = Math.round(w*sh/sw);
+  og.imageSmoothingQuality='high';
+  og.drawImage(c, sx, sy, sw, sh, (1600-w)/2, (900-h)/2, w, h);
+  document.getElementById('f').style.display='none';
+  return {bg, pw:c.width, ph:c.height, w, h};
+};
+</script>
+</body></html>
