@@ -1,0 +1,7 @@
+/* KW 2026-10-28 スマホのトップページで、一番上の帯（メニュー・お問い合わせ・電話番号）の上半分が画面の外に出ていたのを修正。
+   原因：10/29（日本時間）の「冒頭を短くする」CSSで、トップページだけ #header の上の余白を 40px → 10px にしたため、
+        テーマの .tel_area { position: relative; top: -30px; } が画面の上にはみ出した。
+   貼り付け先：グーペ「デザイン → HTML・CSS編集」のCSSの一番最後 */
+@media (max-width: 600px) {
+  body:has(.kw-hero-top) #header { padding-top: 40px !important; }
+}
