@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8">
+<!-- 事務所掲示・パンフ用のLINE案内（A4縦 2480×3508 = 300dpi）。Playwrightで poster.png に書き出す -->
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Shippori+Mincho+B1:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root { --ai:#1d3557; --kaki:#a4673a; --ink:#16212e; --line:#d9dee4; --green:#06C755; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { width:2480px; height:3508px; font-family:"Zen Kaku Gothic New",sans-serif; color:var(--ink); background:#fff; padding:220px 200px; display:flex; flex-direction:column; align-items:center; text-align:center; }
+  .eyebrow { font-size:84px; font-weight:700; color:var(--kaki); letter-spacing:.08em; }
+  h1 { margin-top:60px; font-family:"Shippori Mincho B1",serif; font-size:190px; line-height:1.3; color:var(--ai); }
+  .lead { margin-top:90px; font-size:88px; line-height:1.7; }
+  .qr { margin-top:100px; padding:60px; border:14px solid var(--green); border-radius:60px; }
+  .qr img { display:block; width:880px; height:880px; image-rendering:pixelated; }
+  .id { margin-top:70px; font-size:96px; font-weight:700; }
+  .id span { color:var(--green); }
+  .note { margin-top:60px; font-size:72px; line-height:1.7; color:#4a5561; }
+  .foot { margin-top:auto; padding-top:80px; border-top:6px solid var(--line); width:100%; font-size:76px; line-height:1.7; }
+  .foot b { font-size:92px; color:var(--ai); }
+</style></head>
+<body>
+  <p class="eyebrow">成年後見・お金の管理・契約の手続き</p>
+  <h1>LINEでも<br>ご相談いただけます</h1>
+  <p class="lead">スマートフォンのカメラで<br>QRコードを読み取ってください。</p>
+  <div class="qr"><img src="line_qr.png" alt="LINE友だち追加のQRコード"></div>
+  <p class="id">LINE ID：<span>@kawahara2944</span></p>
+  <p class="note">メッセージには、土日祝日を除く2日以内にご返信します。</p>
+  <div class="foot">一般社団法人かわはら社会福祉士事務所<br><b>電話 092-807-2948</b><br>平日 9:00–12:00 / 13:00–17:00</div>
+</body></html>
