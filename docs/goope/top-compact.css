@@ -1,0 +1,10 @@
+/* KW 2026-10-29 スマホのトップ：冒頭を短くし、相談ボタンを最初の画面に近づける（トップページだけ。PCは変えない） */
+@media (max-width: 600px) {
+  body:has(.kw-hero-top) #header { padding-top: 10px !important; padding-bottom: 4px !important; }
+  body:has(.kw-hero-top) #header .site_title img { max-height: 120px; width: auto; }
+  body:has(.kw-hero-top) .main_inner { padding-top: 8px !important; }
+  .kw-hero-top .kw-hero { padding-top: 22px !important; padding-bottom: 24px !important; }
+  .kw-hero-top .kw-area { margin-top: 0 !important; margin-bottom: 10px !important; letter-spacing: .12em !important; line-height: 1.6 !important; }
+  .kw-hero-top .kw-hero h2 { font-size: 26px !important; line-height: 1.5 !important; margin-bottom: 12px !important; }
+  .kw-hero-top .kw-hero h2 + p { font-size: 14.5px !important; line-height: 1.8 !important; margin-bottom: 16px !important; }
+}
