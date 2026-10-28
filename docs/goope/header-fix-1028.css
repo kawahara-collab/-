@@ -1,7 +1,11 @@
-/* KW 2026-10-28 スマホのトップページで、一番上の帯（メニュー・お問い合わせ・電話番号）の上半分が画面の外に出ていたのを修正。
-   原因：10/29（日本時間）の「冒頭を短くする」CSSで、トップページだけ #header の上の余白を 40px → 10px にしたため、
-        テーマの .tel_area { position: relative; top: -30px; } が画面の上にはみ出した。
-   貼り付け先：グーペ「デザイン → HTML・CSS編集」のCSSの一番最後 */
+/* KW 2026-10-28 スマホ：トップページ上部の表示修正
+   症状：スマホのトップページだけ、上部のバー（メニュー・お問い合わせ・電話番号）が画面の上に約20pxはみ出して見えない。
+   原因：トップページだけ #header の上の余白を10pxにしている（「冒頭を短くする」CSS）ため、テーマの .tel_area { position: relative; top: -30px; } で画面外に出る。
+   対応：トップページのスマホ表示だけ .tel_area の top を 0 にする（余白は短いまま）。
+   確認：幅390px・360pxで、上部バーが上から10pxに収まり、横スクロールなし（ネット版セッションでブラウザに仮に当てて確認）。
+   貼り付け先：グーペ「デザイン → HTML・CSS編集」のCSSの一番最後。元に戻すときは、このブロックを削除して保存。 */
 @media (max-width: 600px) {
-  body:has(.kw-hero-top) #header { padding-top: 40px !important; }
+  body:has(.kw-hero-top) #header .tel_area { top: 0 !important; }
+  body:has(.kw-hero-top) #header .tel_area_mail { padding: 4px 10px !important; border-radius: 4px; }
+  body:has(.kw-hero-top) #header .site_description { box-sizing: border-box; width: auto; max-width: 100%; padding: 0 20px; text-align: center; line-height: 1.8; }
 }
